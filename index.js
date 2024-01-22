@@ -11,6 +11,8 @@ const nilai_akhirRoutes = require('./src/routes/nilai_akhirRoute')
 const kehadiranRoutes = require('./src/routes/kehadiranRoute')
 const detail_pengumpulanRoutes = require('./src/routes/detail_pengumpulanRoute')
 
+const swaggerRoutes = require('./src/routes/swaggerRoute')
+
 // Body-Parser
 app.use(bodyParser.json()); // Menggunakan JSON parser
 app.use(bodyParser.urlencoded({ extended: true })); // Untuk parsing data dari form
@@ -34,10 +36,8 @@ app.use('/nilai_akhir', nilai_akhirRoutes)
 app.use('/kehadiran', kehadiranRoutes)
 app.use('/detail_pengumpulan', detail_pengumpulanRoutes)
 
-const swaggerui = require('swagger-ui-express')
-const docum = require('./src/config/swagger-output.json')
-
-app.use('/api-docs',swaggerui.serve, swaggerui.setup(docum))
+// Documentation Endpoint
+app.use('/api-docs', swaggerRoutes)
 
 
 app.listen(port, () => {
