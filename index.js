@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 const userRoutes = require('./src/routes/userRoute')
 const matkulRoutes = require('./src/routes/matkulRoute')
 const jadwalRoutes = require('./src/routes/jadwalRoute')
@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // Untuk parsing data dari f
 const sync = require('./src/middleware/sync')
 sync();
 
+// Documentation
+
 // Root Endpoint
 // Coming Soon
 
@@ -31,6 +33,11 @@ app.use('/informasi', informasiRoutes)
 app.use('/nilai_akhir', nilai_akhirRoutes)
 app.use('/kehadiran', kehadiranRoutes)
 app.use('/detail_pengumpulan', detail_pengumpulanRoutes)
+
+const swaggerui = require('swagger-ui-express')
+const docum = require('./src/config/swagger-output.json')
+
+app.use('/api-docs',swaggerui.serve, swaggerui.setup(docum))
 
 
 app.listen(port, () => {
