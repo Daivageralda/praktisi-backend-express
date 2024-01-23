@@ -1,127 +1,156 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "My API",
-    "description": "Description",
-    "version": "1.0.0"
-  },
+    "title": "PRAKTISI REST API DOCUMENTATION",
+    "description": "Endpoint lists and guides for the PRAKTISI (Praktikum Sistem Informasi) Website, Version 1.0, using OpenAPI 3.1.0",
+    "version": "v.1.0",
+    "x-last-updated": "2024-01-18T08:00:00Z"
+  }
+  ,
   "host": "localhost:3000",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
   "paths": {
-    "/matkul/getAllMatkul": {
+    "/v1/matkul/getallmatkul": {
       "get": {
-        "tags":["matkul"],
-        "summary": "Get all matkul data",
-        "description": "Retrieve all matkul data from the database.",
+        "tags": ["matkul"],
+        "summary": "Retrieve all matkul data from the database.",
         "responses": {
-          "default": {
-            "description": "Successfully retrieved matkul data."
+          "200": {
+            "description": "Successfully retrieved matkul data.",
+            "content": {
+              "application/json": {
+                "example": 
+                  {
+                    "kd_matkul": "Kode Mata Kuliah",
+                    "nama_matkul": "Nama Mata Kuliah",
+                    "dosen_pengampu": [
+                      "Nama Dosen 1",
+                      "Nama Dosen 2"
+                    ],
+                    "aslab": [
+                      "Nama Aslab 1",
+                      "Nama Aslab 2"
+                    ]
+                  }
+              }
+            }
           }
         }
       }
     },
-    "/users/getAllUser": {
+    "/v1/users/getAllUser": {
       "get": {
-        "tags":["user"],
-        "summary": "Get all user data",
-        "description": "Retrieve all user data from the database.",
+        "description": "",
         "responses": {
           "default": {
-            "description": "Successfully retrieved user data."
+            "description": ""
           }
         }
       }
     },
-    "/jadwal/getAllJadwal": {
+    "/v1/jadwal/getAllJadwal": {
       "get": {
-        "tags":["jadwal"],
-        "summary": "Get all jadwal data",
-        "description": "Retrieve all jadwal data from the database.",
+        "description": "",
         "responses": {
           "default": {
-            "description": "Successfully retrieved jadwal data."
+            "description": ""
           }
         }
       }
     },
-    "/jadwal/createJadwal": {
+    "/v1/jadwal/createJadwal": {
       "post": {
-        "tags":["jadwal"],
-        "summary": "Create a new jadwal",
-        "description": "Create a new jadwal with the provided details.",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "kd_jadwal": { "example": "any" },
-                  "tanggal": { "example": "any" },
-                  "waktu_mulai": { "example": "any" },
-                  "waktu_selesai": { "example": "any" },
-                  "kelas": { "example": "any" },
-                  "ruangan": { "example": "any" },
-                  "kd_matkul": { "example": "any" }
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "kd_jadwal": {
+                  "example": "any"
+                },
+                "tanggal": {
+                  "example": "any"
+                },
+                "waktu_mulai": {
+                  "example": "any"
+                },
+                "waktu_selesai": {
+                  "example": "any"
+                },
+                "kelas": {
+                  "example": "any"
+                },
+                "ruangan": {
+                  "example": "any"
+                },
+                "kd_matkul": {
+                  "example": "any"
                 }
               }
             }
           }
-        },
+        ],
         "responses": {
           "default": {
-            "description": "Successfully created a new jadwal."
+            "description": ""
           }
         }
       }
     },
-    "/jadwal/updateJadwal/{kd_jadwal}": {
+    "/v1/jadwal/updateJadwal/{kd_jadwal}": {
       "put": {
-        "tags":["jadwal"],
-        "summary": "Update an existing jadwal",
-        "description": "Update an existing jadwal with the provided details.",
+        "description": "",
         "parameters": [
           {
             "name": "kd_jadwal",
             "in": "path",
             "required": true,
             "type": "string"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "kd_jadwal": { "example": "any" },
-                  "tanggal": { "example": "any" },
-                  "waktu_mulai": { "example": "any" },
-                  "waktu_selesai": { "example": "any" },
-                  "kelas": { "example": "any" },
-                  "ruangan": { "example": "any" },
-                  "kd_matkul": { "example": "any" }
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "kd_jadwal": {
+                  "example": "any"
+                },
+                "tanggal": {
+                  "example": "any"
+                },
+                "waktu_mulai": {
+                  "example": "any"
+                },
+                "waktu_selesai": {
+                  "example": "any"
+                },
+                "kelas": {
+                  "example": "any"
+                },
+                "ruangan": {
+                  "example": "any"
+                },
+                "kd_matkul": {
+                  "example": "any"
                 }
               }
             }
           }
-        },
+        ],
         "responses": {
           "default": {
-            "description": "Successfully updated the jadwal."
+            "description": ""
           }
         }
       }
     },
-    "/jadwal/deleteJadwal/{kd_jadwal}": {
+    "/v1/jadwal/deleteJadwal/{kd_jadwal}": {
       "delete": {
-        "tags":["jadwal"],
-        "summary": "Delete an existing jadwal",
-        "description": "Delete an existing jadwal from the database.",
+        "description": "",
         "parameters": [
           {
             "name": "kd_jadwal",
@@ -131,71 +160,58 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Successfully deleted the jadwal."
-          },
-          "404": {
-            "description": "Jadwal not found."
+          "default": {
+            "description": ""
           }
         }
       }
     },
-    "/tugas/getAllTugas": {
+    "/v1/tugas/getAllTugas": {
       "get": {
-        "tags":["tugas"],
-        "summary": "Get all tugas data",
-        "description": "Retrieve all tugas data from the database.",
+        "description": "",
         "responses": {
           "default": {
-            "description": "Successfully retrieved tugas data."
+            "description": ""
           }
         }
       }
     },
-    "/informasi/getAllInformasi": {
+    "/v1/informasi/getAllInformasi": {
       "get": {
-        "tags":["informasi"],
-        "summary": "Get all informasi data",
-        "description": "Retrieve all informasi data from the database.",
+        "description": "",
         "responses": {
           "default": {
-            "description": "Successfully retrieved informasi data."
+            "description": ""
           }
         }
       }
     },
-    "/nilai_akhir/getAllNilaiAkhir": {
+    "/v1/nilai_akhir/getAllNilaiAkhir": {
       "get": {
-        "tags":["nilai akhir"],
-        "summary": "Get all nilai akhir data",
-        "description": "Retrieve all nilai akhir data from the database.",
+        "description": "",
         "responses": {
           "default": {
-            "description": "Successfully retrieved nilai akhir data."
+            "description": ""
           }
         }
       }
     },
-    "/kehadiran/getAllKehadiran": {
+    "/v1/kehadiran/getAllKehadiran": {
       "get": {
-        "tags":["kehadiran"],
-        "summary": "Get all kehadiran data",
-        "description": "Retrieve all kehadiran data from the database.",
+        "description": "",
         "responses": {
           "default": {
-            "description": "Successfully retrieved kehadiran data."
+            "description": ""
           }
         }
       }
     },
-    "/detail_pengumpulan/getAllDetailPengumpulan": {
+    "/v1/detail_pengumpulan/getAllDetailPengumpulan": {
       "get": {
-        "tags":["detail pengumpulan"],
-        "summary": "Get all detail pengumpulan data",
-        "description": "Retrieve all detail pengumpulan data from the database.",
+        "description": "",
         "responses": {
           "default": {
-            "description": "Successfully retrieved detail pengumpulan data."
+            "description": ""
           }
         }
       }

@@ -7,6 +7,7 @@ const swaggerConfig = require('../../swagger-output.json')
 const logMiddleware = require('../middleware/log');
 router.use(logMiddleware);
 
+require('../utils/swaggerDate')
 // Swagger UI
 router.use('/',swaggerUi.serve, swaggerUi.setup(swaggerConfig))
 

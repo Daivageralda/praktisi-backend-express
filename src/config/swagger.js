@@ -2,7 +2,7 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'My API',
+    title: 'PRAKTISI REST API DOCUMENTATION',
     description: 'Description'
   },
   host: 'localhost:3000'

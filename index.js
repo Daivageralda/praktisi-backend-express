@@ -28,18 +28,18 @@ sync();
 
 
 // Model Endpoints
-app.use('/matkul', matkulRoutes)
-app.use('/users', userRoutes)
-app.use('/jadwal', jadwalRoutes)
-app.use('/tugas', tugasRoutes)
-app.use('/informasi', informasiRoutes)
-app.use('/nilai_akhir', nilai_akhirRoutes)
-app.use('/kehadiran', kehadiranRoutes)
-app.use('/detail_pengumpulan', detail_pengumpulanRoutes)
+app.use('/v1/matkul', matkulRoutes)
+app.use('/v1/users', userRoutes)
+app.use('/v1/jadwal', jadwalRoutes)
+app.use('/v1/tugas', tugasRoutes)
+app.use('/v1/informasi', informasiRoutes)
+app.use('/v1/nilai_akhir', nilai_akhirRoutes)
+app.use('/v1/kehadiran', kehadiranRoutes)
+app.use('/v1/detail_pengumpulan', detail_pengumpulanRoutes)
 
 
 // Documentation Endpoint
-app.use('/api-docs', swaggerRoutes)
+app.use('/', swaggerRoutes)
 
 
 app.listen(port, () => {
