@@ -26,6 +26,7 @@ sync();
 // Root Endpoint
 // Coming Soon
 
+
 // Model Endpoints
 app.use('/matkul', matkulRoutes)
 app.use('/users', userRoutes)
