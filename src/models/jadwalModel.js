@@ -28,6 +28,10 @@ const Jadwal = sequelize.define('Jadwal', {
     type: DataTypes.STRING(30),
     allowNull: false,
   },
+  materi: {
+    type: DataTypes.STRING(100),
+    allowNull: false,
+  },
   kd_matkul: {
     type: DataTypes.CHAR(10),
     allowNull: false,

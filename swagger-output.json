@@ -1,0 +1,204 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "My API",
+    "description": "Description",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/matkul/getAllMatkul": {
+      "get": {
+        "tags":["matkul"],
+        "summary": "Get all matkul data",
+        "description": "Retrieve all matkul data from the database.",
+        "responses": {
+          "default": {
+            "description": "Successfully retrieved matkul data."
+          }
+        }
+      }
+    },
+    "/users/getAllUser": {
+      "get": {
+        "tags":["user"],
+        "summary": "Get all user data",
+        "description": "Retrieve all user data from the database.",
+        "responses": {
+          "default": {
+            "description": "Successfully retrieved user data."
+          }
+        }
+      }
+    },
+    "/jadwal/getAllJadwal": {
+      "get": {
+        "tags":["jadwal"],
+        "summary": "Get all jadwal data",
+        "description": "Retrieve all jadwal data from the database.",
+        "responses": {
+          "default": {
+            "description": "Successfully retrieved jadwal data."
+          }
+        }
+      }
+    },
+    "/jadwal/createJadwal": {
+      "post": {
+        "tags":["jadwal"],
+        "summary": "Create a new jadwal",
+        "description": "Create a new jadwal with the provided details.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kd_jadwal": { "example": "any" },
+                  "tanggal": { "example": "any" },
+                  "waktu_mulai": { "example": "any" },
+                  "waktu_selesai": { "example": "any" },
+                  "kelas": { "example": "any" },
+                  "ruangan": { "example": "any" },
+                  "kd_matkul": { "example": "any" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Successfully created a new jadwal."
+          }
+        }
+      }
+    },
+    "/jadwal/updateJadwal/{kd_jadwal}": {
+      "put": {
+        "tags":["jadwal"],
+        "summary": "Update an existing jadwal",
+        "description": "Update an existing jadwal with the provided details.",
+        "parameters": [
+          {
+            "name": "kd_jadwal",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kd_jadwal": { "example": "any" },
+                  "tanggal": { "example": "any" },
+                  "waktu_mulai": { "example": "any" },
+                  "waktu_selesai": { "example": "any" },
+                  "kelas": { "example": "any" },
+                  "ruangan": { "example": "any" },
+                  "kd_matkul": { "example": "any" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "Successfully updated the jadwal."
+          }
+        }
+      }
+    },
+    "/jadwal/deleteJadwal/{kd_jadwal}": {
+      "delete": {
+        "tags":["jadwal"],
+        "summary": "Delete an existing jadwal",
+        "description": "Delete an existing jadwal from the database.",
+        "parameters": [
+          {
+            "name": "kd_jadwal",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted the jadwal."
+          },
+          "404": {
+            "description": "Jadwal not found."
+          }
+        }
+      }
+    },
+    "/tugas/getAllTugas": {
+      "get": {
+        "tags":["tugas"],
+        "summary": "Get all tugas data",
+        "description": "Retrieve all tugas data from the database.",
+        "responses": {
+          "default": {
+            "description": "Successfully retrieved tugas data."
+          }
+        }
+      }
+    },
+    "/informasi/getAllInformasi": {
+      "get": {
+        "tags":["informasi"],
+        "summary": "Get all informasi data",
+        "description": "Retrieve all informasi data from the database.",
+        "responses": {
+          "default": {
+            "description": "Successfully retrieved informasi data."
+          }
+        }
+      }
+    },
+    "/nilai_akhir/getAllNilaiAkhir": {
+      "get": {
+        "tags":["nilai akhir"],
+        "summary": "Get all nilai akhir data",
+        "description": "Retrieve all nilai akhir data from the database.",
+        "responses": {
+          "default": {
+            "description": "Successfully retrieved nilai akhir data."
+          }
+        }
+      }
+    },
+    "/kehadiran/getAllKehadiran": {
+      "get": {
+        "tags":["kehadiran"],
+        "summary": "Get all kehadiran data",
+        "description": "Retrieve all kehadiran data from the database.",
+        "responses": {
+          "default": {
+            "description": "Successfully retrieved kehadiran data."
+          }
+        }
+      }
+    },
+    "/detail_pengumpulan/getAllDetailPengumpulan": {
+      "get": {
+        "tags":["detail pengumpulan"],
+        "summary": "Get all detail pengumpulan data",
+        "description": "Retrieve all detail pengumpulan data from the database.",
+        "responses": {
+          "default": {
+            "description": "Successfully retrieved detail pengumpulan data."
+          }
+        }
+      }
+    }
+  }
+}

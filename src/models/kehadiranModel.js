@@ -20,18 +20,6 @@ const Kehadiran = sequelize.define('Kehadiran', {
       key: 'kd_jadwal',
     },
   },
-  pertemuan: {
-    type: DataTypes.INTEGER(11),
-    allowNull: false,
-  },
-  materi: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-  },
-  tanggal: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
   status: {
     type: DataTypes.ENUM('Hadir', 'Tidak Hadir'),
     allowNull: false,
