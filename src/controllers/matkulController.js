@@ -5,35 +5,61 @@ const response = require('../utils/payload')
 // Define Relationship
 require('../models/association')
 
+// Function to Handle Errors
+const handleErrors = require('../utils/handlingError')
+
 // Get Method
 const getAllMatkul = async (req, res) => {
   try {
     const matkuls = await Matkul.findAll({
       include: [
-        { model: User,
-          attributes: ['nama'],
-          as: 'aslab' },
-        { model: User,
-          attributes: ['nama'],
-          as: 'dosen'
-    }]
-  })
+        { model: User, attributes: ['nama', 'dosen', 'asisten_laboratorium'], as: 'pengajar' },
+      ],
+    })
 
-    // Mapping
-    const transformedData = matkuls.map((matkul) => ({
-      kd_matkul: matkul.kd_matkul,
-      nama_matkul: matkul.nama_matkul,
-      userid: matkul.userid,
-      aslab: matkul.aslab.map((aslab) => aslab.nama),
-      dosen_pengampu: matkul.dosen ? matkul.dosen.nama : null
-    }));
+    const transformedData = matkuls.map((matkul) => {
+      const aslab = matkul.pengajar
+        .filter((pengajar) => pengajar.asisten_laboratorium)
+        .map((pengajar) => pengajar.nama)
 
-    // Result
-    response(200, transformedData, 'Data Matkul Berhasil Diambil', res);
+      const dosenPengampu = matkul.pengajar
+      .filter((pengajar) => pengajar.dosen)
+      .map((pengajar) => pengajar.nama)
+
+      return {
+        kd_matkul: matkul.kd_matkul,
+        nama_matkul: matkul.nama_matkul,
+        aslab: aslab,
+        dosen_pengampu: dosenPengampu,
+      }
+    })
+
+    response(200, transformedData, 'Data User Berhasil Diambil', res)
   } catch (error) {
-    console.error('Terjadi Kesalahan Saat Mengambil Data Matkul:', error);
-    response(500, null, 'Kesalahan Pada Server Internal', res);
+    handleErrors(error, res)
   }
-};
+}
 
-module.exports = { getAllMatkul };
+// POST Method
+const createMatkul = async (req, res) => {
+  try {
+    const { kd_matkul, nama_matkul} = req.body
+
+    const newMatkul = await Matkul.create({
+      kd_matkul,
+      nama_matkul
+    })
+
+    await newMatkul.reload()
+
+    const transformedData = {
+      kd_jadwal: newJadwal.kd_jadwal,
+      nama_matkul: newJadwal.nama_matkul,
+    }
+
+    response(201, transformedData, 'Matkul Berhasil Dibuat', res)
+  } catch (error) {
+    handleErrors(error, res)
+  }
+}
+module.exports = { getAllMatkul, createMatkul }

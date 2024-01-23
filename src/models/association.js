@@ -8,10 +8,8 @@ const Kehadiran = require('./kehadiranModel')
 const DetailPengumpulan = require('./detail_pengumpulanModel')
 
 // Establishing a Relationship Between User And Matkul
-User.hasMany(Matkul, { foreignKey: 'userid', as: 'mengampu'})
-User.belongsTo(Matkul, { foreignKey: 'kd_matkul', as: 'pengajar'})
-Matkul.hasMany(User, {foreignKey: 'kd_matkul', as: 'aslab'})
-Matkul.belongsTo(User, {foreignKey: 'userid', as: 'dosen'})
+User.belongsTo(Matkul, { foreignKey: 'kd_matkul'})
+Matkul.hasMany(User, {foreignKey: 'kd_matkul', as: 'pengajar'})
 
 // Establishing a Relationship Between Jadwal and Matkul
 Jadwal.belongsTo(Matkul, { foreignKey: 'kd_matkul' })

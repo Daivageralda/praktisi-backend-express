@@ -5,11 +5,8 @@ const response = require('../utils/payload');
 // Define Relationship
 require('../models/association');
 
-// Helper Function to Handle Errors
-const handleErrors = (error, res) => {
-  console.error('Terjadi Kesalahan:', error);
-  response(500, null, 'Kesalahan Pada Server Internal', res);
-};
+// Function to Handle Errors
+const handleErrors = require('../utils/handlingError')
 
 // Get Method
 const getAllJadwal = async (req, res) => {
@@ -72,7 +69,7 @@ const createJadwal = async (req, res) => {
   } catch (error) {
     handleErrors(error, res);
   }
-};
+}
 
 // Method PUT
 const updateJadwal = async (req, res) => {

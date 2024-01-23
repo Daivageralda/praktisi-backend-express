@@ -9,8 +9,8 @@ router.use(logMiddleware);
 // Get Method
 router.get('/getallmatkul', matkulController.getAllMatkul)
 
-// // Post Method
-// router.post('/addmatkul', matkulController.addMatkul)
+// Post Method
+router.post('/creatematkul', matkulController.createMatkul)
 
 // // Put Method
 // router.put('/updatematkul/:kd_matkul', matkulController.updateMatkul)
