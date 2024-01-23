@@ -37,6 +37,7 @@ app.use('/nilai_akhir', nilai_akhirRoutes)
 app.use('/kehadiran', kehadiranRoutes)
 app.use('/detail_pengumpulan', detail_pengumpulanRoutes)
 
+
 // Documentation Endpoint
 app.use('/api-docs', swaggerRoutes)
 
