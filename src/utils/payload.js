@@ -1,4 +1,4 @@
-const response = (statusCode, data, message, token, res) => {
+const response = (statusCode, data, message, res, token) => {
     // Default Payload
     const responseObject = {
       message: message,

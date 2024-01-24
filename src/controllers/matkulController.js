@@ -53,8 +53,8 @@ const createMatkul = async (req, res) => {
     await newMatkul.reload()
 
     const transformedData = {
-      kd_jadwal: newJadwal.kd_jadwal,
-      nama_matkul: newJadwal.nama_matkul,
+      kd_matkul: newMatkul.kd_matkul,
+      nama_matkul: newMatkul.nama_matkul,
     }
 
     response(201, transformedData, 'Matkul Berhasil Dibuat', res)
