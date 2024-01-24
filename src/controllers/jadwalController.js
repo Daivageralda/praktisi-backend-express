@@ -74,7 +74,7 @@ const createJadwal = async (req, res) => {
 // Method PUT
 const updateJadwal = async (req, res) => {
   try {
-    const { kd_jadwal, tanggal, waktu_mulai, waktu_selesai, kelas, ruangan, kd_matkul } = req.body;
+    const { kd_jadwal, tanggal, waktu_mulai, waktu_selesai, kelas, ruangan, materi, kd_matkul } = req.body;
 
     const jadwalToUpdate = await Jadwal.findOne({ where: { kd_jadwal } });
 
@@ -88,6 +88,7 @@ const updateJadwal = async (req, res) => {
       waktu_selesai,
       kelas,
       ruangan,
+      materi,
       kd_matkul,
     });
 
@@ -100,6 +101,7 @@ const updateJadwal = async (req, res) => {
       waktu_selesai: jadwalToUpdate.waktu_selesai,
       kelas: jadwalToUpdate.kelas,
       ruangan: jadwalToUpdate.ruangan,
+      materi: jadwalToUpdate.materi,
       kd_matkul: jadwalToUpdate.kd_matkul,
       nama_matkul: jadwalToUpdate.Matkul?.nama_matkul || null,
     };

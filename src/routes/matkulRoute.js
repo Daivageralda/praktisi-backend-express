@@ -12,10 +12,10 @@ router.get('/getallmatkul', matkulController.getAllMatkul)
 // Post Method
 router.post('/creatematkul', matkulController.createMatkul)
 
-// // Put Method
-// router.put('/updatematkul/:kd_matkul', matkulController.updateMatkul)
+// Put Method
+router.put('/updatematkul/:kd_matkul', matkulController.updateMatkul)
 
-// // Deleter Method
-// router.delete('/deletematkul/:kd_matkul', matkulController.deleteMatkul)
+// Delete Method
+router.delete('/deletematkul/:kd_matkul', matkulController.deleteMatkul)
 
 module.exports = router

@@ -62,4 +62,51 @@ const createMatkul = async (req, res) => {
     handleErrors(error, res)
   }
 }
-module.exports = { getAllMatkul, createMatkul }
+
+// Method PUT
+const updateMatkul = async (req, res) => {
+  try {
+    const { kd_matkul, nama_matkul } = req.body
+
+    const matkulToUpdate = await Matkul.findOne({ where: { kd_matkul } })
+
+    if (!matkulToUpdate) {
+      return response(404, null, 'Matkul Tidak Ditemukan', res)
+    }
+
+    await matkulToUpdate.update({
+      nama_matkul
+    })
+
+    await matkulToUpdate.reload()
+
+    const transformedData = {
+      kd_matkul: matkulToUpdate.kd_matkul,
+      nama_matkul: matkulToUpdate.nama_matkul,
+    }
+
+    response(200, transformedData, 'Matkul Berhasil Diperbarui', res)
+  } catch (error) {
+    handleErrors(error, res)
+  }
+}
+
+// Method DELETE
+const deleteMatkul = async (req, res) => {
+  try {
+    const { kd_matkul } = req.params;
+
+    const deletedMatkul = await Matkul.destroy({
+      where: { kd_matkul },
+    });
+
+    if (deletedMatkul) {
+      response(200, null, 'Data Matkul Berhasil Dihapus', res);
+    } else {
+      response(404, null, 'Data Matkul Tidak Ditemukan', res);
+    }
+  } catch (error) {
+    handleErrors(error, res);
+  }
+};
+module.exports = { getAllMatkul, createMatkul, updateMatkul, deleteMatkul }

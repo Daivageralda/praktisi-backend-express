@@ -11,11 +11,6 @@ const Matkul = sequelize.define('Matkul', {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
-  userid: {
-    // Foreign From User But Not Declared Due To Circular Dependencies
-    type: DataTypes.CHAR(20),
-    allowNull: true,
-  },
 }, {
   tableName: 'matkul_prak',
   timestamps: false,
