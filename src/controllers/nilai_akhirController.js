@@ -10,6 +10,7 @@ require('../models/association')
 const getAllNilaiAkhir = async (req, res) => {
   try {
     const nilaiAkhir = await NilaiAkhir.findAll({
+      attributes: ['usersid', 'kd_matkul', 'nilai_akhir'],
       include: [{
         model: User,
         attributes: ['nama']

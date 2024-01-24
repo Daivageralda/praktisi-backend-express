@@ -1,39 +1,49 @@
 {
-  "openapi": "3.1.0",
+  "swagger": "2.0",
   "info": {
     "title": "PRAKTISI REST API DOCUMENTATION",
-    "description": "Endpoint lists and guides for the PRAKTISI (Praktikum Sistem Informasi) Website, Version 1.0, using OpenAPI 3.1.0",
-    "version": "v.1.0",
-    "x-last-updated": "2024-01-18T08:00:00Z"
-  }
-  ,
+    "description": "Description",
+    "version": "1.0.0"
+  },
   "host": "localhost:3000",
   "basePath": "/",
+  "schemes": [
+    "http"
+  ],
   "paths": {
     "/v1/matkul/getallmatkul": {
       "get": {
-        "tags": ["matkul"],
-        "summary": "Retrieve all matkul data from the database.",
+        "description": "",
         "responses": {
-          "200": {
-            "description": "Successfully retrieved matkul data.",
-            "content": {
-              "application/json": {
-                "example": 
-                  {
-                    "kd_matkul": "Kode Mata Kuliah",
-                    "nama_matkul": "Nama Mata Kuliah",
-                    "dosen_pengampu": [
-                      "Nama Dosen 1",
-                      "Nama Dosen 2"
-                    ],
-                    "aslab": [
-                      "Nama Aslab 1",
-                      "Nama Aslab 2"
-                    ]
-                  }
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/v1/matkul/creatematkul": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "kd_matkul": {
+                  "example": "any"
+                },
+                "nama_matkul": {
+                  "example": "any"
+                }
               }
             }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }

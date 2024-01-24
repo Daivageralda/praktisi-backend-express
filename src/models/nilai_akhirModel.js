@@ -28,6 +28,7 @@ const NilaiAkhir = sequelize.define('NilaiAkhir', {
 }, {
   tableName: 'nilai_akhir',
   timestamps: false,
+  primaryKey:false
 })
 
 module.exports = NilaiAkhir

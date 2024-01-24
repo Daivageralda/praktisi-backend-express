@@ -16,7 +16,7 @@ const getAllKehadiran = async (req, res) => {
           attributes: ['nama']},
         {
             model: Jadwal,
-            attributes: ['kd_matkul'],
+            attributes: ['kd_matkul','tanggal'],
             include: [{
                 model: Matkul,
                 attributes: ['nama_matkul']
@@ -33,7 +33,7 @@ const getAllKehadiran = async (req, res) => {
         nama_matkul: kehadiran.Jadwal.Matkul ? kehadiran.Jadwal.Matkul.nama_matkul : null,
         pertemuan: kehadiran.pertemuan,
         materi: kehadiran.materi,
-        tanggal: kehadiran.tanggal.toLocaleString('id-ID', {
+        tanggal: kehadiran.Jadwal.tanggal.toLocaleString('id-ID', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
