@@ -7,6 +7,15 @@ const logMiddleware = require('../middleware/log');
 router.use(logMiddleware);
 
 //Get Method
-router.get('/getAllTugas', tugasController.getAllTugas)
+router.get('/getalltugas', tugasController.getAllTugas)
+
+//Post Method
+router.post('/createtugas', tugasController.createTugas)
+
+//Put Method
+router.put('/updatetugas/:kd_tugas', tugasController.updateTugas)
+
+//Delete Method
+router.delete('/deletetugas/:kd_tugas', tugasController.deleteTugas)
 
 module.exports = router

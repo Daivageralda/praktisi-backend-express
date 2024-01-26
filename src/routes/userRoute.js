@@ -7,6 +7,6 @@ const logMiddleware = require('../middleware/log');
 router.use(logMiddleware);
 
 // Get Method
-router.get('/getAllUser', userController.getAllUsers)
+router.get('/getalluser', userController.getAllUsers)
 
 module.exports = router
