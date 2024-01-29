@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const cors = require('cors');
 const bodyParser = require('body-parser')
 const userRoutes = require('./src/routes/userRoute')
 const matkulRoutes = require('./src/routes/matkulRoute')
@@ -14,8 +15,9 @@ const authRoutes = require('./src/routes/authRoute')
 
 const swaggerRoutes = require('./src/routes/swaggerRoute')
 
-const cors = require('cors');
+// X-Origin Resource Sharing
 app.use(cors());
+
 // Body-Parser
 app.use(bodyParser.json()); // Menggunakan JSON parser
 app.use(bodyParser.urlencoded({ extended: true })); // Untuk parsing data dari form
