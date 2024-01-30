@@ -12,7 +12,6 @@ const auth_server = 'http://localhost:3001';
 const login_user = async (req, res) => {
     try {
         const { userid, password } = req.body;
-
         const isPraktikan = userid.length === 10;
         const isDosen = userid.length > 10;
         const status = checkRole(userid)
@@ -20,7 +19,7 @@ const login_user = async (req, res) => {
         const existingUser = await User.findOne({ where: { userid } });
 
         if (!existingUser) {
-            const responses = await axios.post(`${auth_server}/api/login`, { userid, password });
+            const responses = await axios.post(`${auth_server}/api/login`,{ userid, password },{ headers: { 'api-key': process.env.API_KEY }})
             console.log('Respons from auth server:', responses.data);
             if (responses.status === 200) {
                 const token = jwt.sign({ userid, status:status.status }, process.env.SECRET_KEY, { expiresIn: '1h' });
@@ -40,7 +39,8 @@ const login_user = async (req, res) => {
                 response(401,responses.data,'Username atau password salah',res)
             }
         } else {
-            const responses = await axios.post(`${auth_server}/api/login`, { userid, password });
+            const responses = await axios.post(`${auth_server}/api/login`,{ userid, password },{ headers: { 'api-key': process.env.API_KEY }})
+              
             if (responses.status === 200) {
                 const token = jwt.sign({ userid, status:status.status }, process.env.SECRET_KEY, { expiresIn: '1h' });
                 response(200,token,'Berhasil Login',res)
